@@ -1,10 +1,11 @@
-import React from 'react';
-import logo from './logo.svg';
+import React from "react";
+import Dashboard from "./components/stockDashboard/dashboard";
+import logo from "./logo.svg";
 
 function App() {
   return (
-    <div className="App">
-      
+    <div>
+      <Dashboard />
     </div>
   );
 }
