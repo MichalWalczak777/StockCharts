@@ -13,13 +13,17 @@ import {
 import { StockDataModel } from "../models";
 import { convertDate } from "./utils";
 
-const Chart = () => {
+interface IChartProps {
+  currencySymbol: string;
+}
+
+const Chart = ({ currencySymbol }: IChartProps) => {
   const [stockData, setStockData] = useState<Array<StockDataModel>>();
 
   useEffect(() => {
     const downloadStockData = async () => {
       const response = await axios.get(
-        `https://api.coingecko.com/api/v3/coins/1x-short-bitcoin-token/ohlc?vs_currency=usd&days=1`
+        `https://api.coingecko.com/api/v3/coins/${currencySymbol}/ohlc?vs_currency=usd&days=1`
       );
       const data: Array<Array<number>> = response?.data;
       const closeIndexData: Array<StockDataModel> = data?.map((OHLCArray) => ({

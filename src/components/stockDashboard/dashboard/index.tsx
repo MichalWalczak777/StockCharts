@@ -1,7 +1,12 @@
 import Chart from "../chart";
+import ChartGrid from "../chartGrid";
 
-const Dashboard = () => {
-  return <Chart />;
+interface IDashboardProps {
+  cryptocurrencies: Array<string>;
+}
+
+const Dashboard = ({ cryptocurrencies }: IDashboardProps) => {
+  return <ChartGrid cryptocurrencies={cryptocurrencies} />;
 };
 
 export default Dashboard;
