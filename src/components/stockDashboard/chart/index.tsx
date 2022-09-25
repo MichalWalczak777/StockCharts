@@ -1,5 +1,15 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import {
+  ResponsiveContainer,
+  AreaChart,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+  Area,
+} from "recharts";
 import { StockDataModel } from "../models";
 import { convertDate } from "./utils";
 
@@ -14,13 +24,41 @@ const Chart = () => {
       const data: Array<Array<number>> = response?.data;
       const closeIndexData: Array<StockDataModel> = data?.map((OHLCArray) => ({
         time: convertDate(new Date(OHLCArray[0])),
-        closed: OHLCArray[OHLCArray.length - 1],
+        close: OHLCArray[OHLCArray.length - 1],
       }));
       closeIndexData && setStockData(closeIndexData);
     };
     downloadStockData();
   }, []);
-  return null;
+  return (
+    <div style={{ width: "1100px", height: "600px", backgroundColor: "black" }}>
+      <ResponsiveContainer width="100%" height="100%">
+        <AreaChart
+          width={500}
+          height={300}
+          data={stockData}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 5,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="time" />
+          <YAxis domain={["dataMin - 0.5", "dataMax + 0.5"]} />
+          <Tooltip />
+          <Legend />
+          <Area
+            type="monotone"
+            dataKey="close"
+            stroke="#82ca9d"
+            fill="#82ca9d"
+          />
+        </AreaChart>
+      </ResponsiveContainer>
+    </div>
+  );
 };
 
 export default Chart;
