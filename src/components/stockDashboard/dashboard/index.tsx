@@ -1,17 +1,7 @@
-import axios from "axios";
-import { useEffect } from "react";
+import Chart from "../chart";
 
 const Dashboard = () => {
-  useEffect(() => {
-    const downloadStockData = async () => {
-      const response = await axios.get(
-        `https://api.coingecko.com/api/v3/coins/1x-short-bitcoin-token/ohlc?vs_currency=usd&days=1`
-      );
-    };
-    downloadStockData();
-  }, []);
-
-  return null;
+  return <Chart />;
 };
 
 export default Dashboard;
