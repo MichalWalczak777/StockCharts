@@ -11,6 +11,7 @@ import {
   Area,
 } from "recharts";
 import { StockDataModel } from "../models";
+import { ChartWrapper } from "./styles";
 import { convertDate } from "./utils";
 
 interface IChartProps {
@@ -33,9 +34,9 @@ const Chart = ({ currencySymbol }: IChartProps) => {
       closeIndexData && setStockData(closeIndexData);
     };
     downloadStockData();
-  }, []);
+  }, [currencySymbol]);
   return (
-    <div style={{ width: "1100px", height: "600px", backgroundColor: "black" }}>
+    <ChartWrapper>
       <ResponsiveContainer width="100%" height="100%">
         <AreaChart
           width={500}
@@ -50,7 +51,7 @@ const Chart = ({ currencySymbol }: IChartProps) => {
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="time" />
-          <YAxis domain={["dataMin - 0.5", "dataMax + 0.5"]} />
+          <YAxis domain={['auto', 'auto']} />
           <Tooltip />
           <Legend />
           <Area
@@ -61,7 +62,7 @@ const Chart = ({ currencySymbol }: IChartProps) => {
           />
         </AreaChart>
       </ResponsiveContainer>
-    </div>
+    </ChartWrapper>
   );
 };
 

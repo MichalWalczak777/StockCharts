@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { Container } from "../../styles";
 import ChartGrid from "../chartGrid";
 
 const Dashboard = () => {
@@ -19,7 +20,11 @@ const Dashboard = () => {
     getCurrenciesByMarketCap();
   }, []);
 
-  return <ChartGrid cryptocurrencies={currencies} />;
+  return (
+    <Container>
+      <ChartGrid cryptocurrencies={currencies} />;
+    </Container>
+  );
 };
 
 export default Dashboard;
