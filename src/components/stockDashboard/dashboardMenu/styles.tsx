@@ -1,5 +1,4 @@
-import styled from "styled-components";
-
+import styled, { css } from "styled-components";
 
 export const SearchForm = styled.form`
   display: flex;
@@ -7,15 +6,15 @@ export const SearchForm = styled.form`
 `;
 
 export const InputWrapper = styled.div`
-width: 50%;
-border: 2px solid #767676;
-border-radius: 4px;
-display: inline-flex;
-justify-content: space-between;
+  width: 50%;
+  border: 2px solid #767676;
+  border-radius: 4px;
+  display: inline-flex;
+  justify-content: space-between;
 `;
 
 export const SearchInput = styled.input`
-width: 90%;
+  width: 90%;
   padding: 10px;
   height: 2rem;
   border: none;
@@ -25,7 +24,7 @@ width: 90%;
 `;
 
 export const SearchButton = styled.button`
-min-width: 50px;
+  min-width: 50px;
   background-color: #fff;
   height: 100%;
   border: none;
@@ -40,16 +39,23 @@ export const FilterChips = styled.div`
   padding-top: 24px;
   display: flex;
   justify-content: flex-start;
+  cursor: pointer;
 `;
 
-export const FilterChip = styled.div`
-border: 2px solid #767676;
-padding: 7px;
+export const FilterChip = styled.div<{ selected: boolean }>`
+  border: 2px solid #767676;
+  padding: 7px;
   border-radius: 16px;
   margin-right: 10px;
-`
+  ${(props) =>
+    props.selected &&
+    css`
+      background: black;
+      color: white;
+    `}
+`;
 
 export const CurrencySelect = styled.select`
   height: 40px;
   align-self: flex-end;
-`
+`;

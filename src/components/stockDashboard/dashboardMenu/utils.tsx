@@ -1,4 +1,7 @@
-export const filters = ["market cap", "volume", "top gainer", "top loser"];
+export const filters = [
+  { name: "market cap", filter: "market_cap_desc" },
+  { name: "volume", filter: "volume_desc" },
+];
 export const currencies = [
   "usd",
   "aed",
